@@ -1,0 +1,47 @@
+name: Publicar Admin Pruebas
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: admin-pruebas-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar staging del Admin
+        uses: actions/checkout@v4
+        with:
+          repository: jorge2610g/yummy-admin
+          ref: staging
+          path: site
+
+      - name: Preparar sitio de Pruebas
+        run: |
+          rm -f site/CNAME
+          rm -rf site/.git site/.github site/tests site/docs site/supabase site/node_modules
+          touch site/.nojekyll
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Empaquetar sitio
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Publicar GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

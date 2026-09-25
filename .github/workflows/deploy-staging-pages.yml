@@ -1,6 +1,8 @@
 name: Publicar Admin Pruebas
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"

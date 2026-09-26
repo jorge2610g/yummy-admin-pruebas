@@ -3,3 +3,4 @@ Publicar auditor IA v2.3.77: 2026-09-26T17:09Z
 Publicar gate v2.3.78 source=jorge2610g/yummy-admin staging=395bd0f854714d417719c67807dbacb6ff2e89ff: 2026-09-26T19:05Z
 Publicar gate exacto source-sha=051d1bcefcd3f07cfe4e44fe4a836bbe9ce60532
 Publicar staging verificado source-sha=f1ff6cfae2abd027d321163115cd0eca72e77b6b
+Publicar fix guard source-sha=6c3e9419d04ad92b9b7ea3e4f2250a493a3525b7

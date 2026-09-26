@@ -32,6 +32,7 @@ jobs:
 
       - name: Preparar sitio de Pruebas
         run: |
+          git -C site rev-parse HEAD > site/.staging-source-sha
           rm -f site/CNAME
           rm -rf site/.git site/.github site/tests site/docs site/supabase site/node_modules
           touch site/.nojekyll
